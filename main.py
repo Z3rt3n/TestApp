@@ -41,6 +41,8 @@ if config.debug:
 else:
     app.debug = False
 
+print("Вcё работает!")
+
 
 
 
