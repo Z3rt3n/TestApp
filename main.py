@@ -4,8 +4,15 @@ from pydantic import BaseModel
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
+from logger import logger
+from config import load_config
+
+
 
 app = FastAPI()
+
+config = load_config()
+
 
 class User(BaseModel):
     username: str
@@ -20,8 +27,19 @@ async def root(user: User):
     print(f'Мы получили от юзера {user.username} такое сообщение: {user.message}')
     return user
 
+@app.get("/db")
+def get_db_info():
+    logger.info(f"Connecting to database: {config.db.database_url}")
+    return {"database_url": config.db.database_url}
 
 
+
+
+
+if config.debug:
+    app.debug = True
+else:
+    app.debug = False
 
 
 
