@@ -1,6 +1,6 @@
 [tool.black]
 line-length = 120
-target-version = ['py3123']  # тут пример под питон 3.11
+target-version = ['py3123'] 
 extend-exclude = '''
     (venv,
     alembic,
