@@ -42,7 +42,7 @@ else:
     app.debug = False
 
 print("Вcё работает!")
-
+print("Сервер запущен!")
 
 
 
